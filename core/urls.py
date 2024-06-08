@@ -1,6 +1,6 @@
 from django.urls import path
 
-from core.api.views import ListCreateAPIView, GameModelListCreateAPIView
+from core.api.views import GameModelListCreateAPIView, PlayerListCreateAPIView
 from core.views import (
     PlayerModelCreateView,
     PlayerModelListView,
@@ -15,9 +15,9 @@ from core.views import (
 app_name = "core"
 
 urlpatterns = [
-    path("api/v1/players/", ListCreateAPIView.as_view(), name="player-list"),
+    path("api/v1/players/", PlayerListCreateAPIView.as_view(), name="player-list"),
     path("api/v1/games/", GameModelListCreateAPIView.as_view(), name="game-list"),
-    path("api/v1/player/create/", ListCreateAPIView.as_view(), name="player-create"),
+    path("api/v1/player/create/", PlayerListCreateAPIView.as_view(), name="player-create"),
     path(
         "api/v1/game/create/", GameModelListCreateAPIView.as_view(), name="game-create"
     ),
