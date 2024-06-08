@@ -1,4 +1,4 @@
-{% extends 'dashboard/layouts/base.html' %}
+{% extends 'layouts/base.html' %}
 {% load static %}
 {% load i18n %}
 
@@ -15,7 +15,7 @@
 
                 <div class="row">
                     {% for field in form %}
-                        {% include 'dashboard/layouts/form/router.html' with field=field %}
+                        {% include 'layouts/form/router.html' with field=field %}
                     {% endfor %}
                  
                 </div>

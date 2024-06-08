@@ -9,12 +9,20 @@ from core.api.filters import PlayerModelFilter, GameModelFilter
 
 
 class CachedListCreateAPIView(ListCreateAPIView):
+    """
+    Base view with caching operations.
+    """
+
     @method_decorator(cache_page(60 * 15))
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 
 
 class PlayerListCreateAPIView(CachedListCreateAPIView):
+    """
+    List and create PlayerModel instances with caching.
+    """
+
     queryset = PlayerModel.objects.order_by("-pk")
     serializer_class = PlayerModelSerializer
     filter_backends = [DjangoFilterBackend]
@@ -22,6 +30,10 @@ class PlayerListCreateAPIView(CachedListCreateAPIView):
 
 
 class GameModelListCreateAPIView(CachedListCreateAPIView):
+    """
+    List and create GameModel instances with caching.
+    """
+
     queryset = GameModel.objects.order_by("-date_played")
     serializer_class = GameModelSerializer
     filter_backends = [DjangoFilterBackend]

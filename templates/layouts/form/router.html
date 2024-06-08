@@ -1,0 +1,22 @@
+<div class="mb-6">
+    <label class="col-lg-12 col-form-label {% if field.field.required %}required{% endif %} fw-semibold fs-6">
+        {{ field.label }}
+    </label>
+
+    {% if field.name in 'date_played' %}
+        {% include 'layouts/form/datepicker.html' with field=field %}  
+    {% elif field.field.widget.input_type == 'text' %}
+        {% include 'layouts/form/text.html' with field=field %}
+    {% elif field.field.widget.input_type == 'number' %}
+        {% include 'layouts/form/number.html' with field=field %}
+    {% elif field.field.widget.input_type == 'checkbox' %}
+        {% include 'layouts/form/checkbox.html' with field=field %}
+    {% elif field.field.widget.input_type == 'select' %}
+        {% include 'layouts/form/select.html' with field=field %}
+    {% elif field.field.widget.input_type == 'file' %}
+        {% include 'layouts/form/file.html' with field=field %}
+    {% elif 'textarea' in field.field.widget.attrs.class %}
+        {% include 'layouts/form/textarea.html' with field=field %}
+    {% endif %}
+
+</div>

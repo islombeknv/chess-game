@@ -7,12 +7,20 @@ from core.models import PlayerModel, GameModel
 
 
 class PlayerModelListView(ListView):
-    template_name = "dashboard/players.html"
+    """
+    Player list view: displays PlayerModel instances.
+    """
+
+    template_name = "players.html"
     queryset = PlayerModel.objects.order_by("-pk")
 
 
 class PlayerModelDeleteView(DeleteView):
-    template_name = "dashboard/players.html"
+    """
+    Player deletion view: confirms deletion with success message.
+    """
+
+    template_name = "players.html"
     queryset = PlayerModel.objects.order_by("-pk")
 
     def form_valid(self, form):
@@ -25,7 +33,11 @@ class PlayerModelDeleteView(DeleteView):
 
 
 class PlayerModelCreateView(CreateView):
-    template_name = "dashboard/form.html"
+    """
+    Player creation view: creates a PlayerModel instance with success message.
+    """
+
+    template_name = "form.html"
     queryset = PlayerModel.objects.order_by("-pk")
     form_class = PlayerModelForm
 
@@ -41,7 +53,11 @@ class PlayerModelCreateView(CreateView):
 
 
 class PlayerModelUpdateView(UpdateView):
-    template_name = "dashboard/form.html"
+    """
+    Player update view: updates a PlayerModel instance with success message.
+    """
+
+    template_name = "form.html"
     queryset = PlayerModel.objects.order_by("-pk")
     form_class = PlayerModelForm
 
@@ -57,12 +73,20 @@ class PlayerModelUpdateView(UpdateView):
 
 
 class GameModelListView(ListView):
-    template_name = "dashboard/games.html"
+    """
+    Game list view: displays GameModel instances.
+    """
+
+    template_name = "games.html"
     queryset = GameModel.objects.order_by("-date_played")
 
 
 class GameModelDeleteView(DeleteView):
-    template_name = "dashboard/games.html"
+    """
+    Game deletion view: confirms deletion with success message.
+    """
+
+    template_name = "games.html"
     queryset = GameModel.objects.order_by("-date_played")
 
     def form_valid(self, form):
@@ -75,7 +99,11 @@ class GameModelDeleteView(DeleteView):
 
 
 class GameModelCreateView(CreateView):
-    template_name = "dashboard/form.html"
+    """
+    Game creation view: adds new a GameModel instance with success message.
+    """
+
+    template_name = "form.html"
     queryset = GameModel.objects.order_by("-date_played")
     form_class = GameModelForm
 
@@ -91,7 +119,11 @@ class GameModelCreateView(CreateView):
 
 
 class GameModelUpdateView(UpdateView):
-    template_name = "dashboard/form.html"
+    """
+    Game update view: modifies a GameModel instance with success message.
+    """
+
+    template_name = "form.html"
     queryset = GameModel.objects.order_by("-date_played")
     form_class = GameModelForm
 
