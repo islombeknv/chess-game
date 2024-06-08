@@ -1,0 +1,60 @@
+{% load static %}
+{% load i18n %}
+
+<div class="app-sidebar flex-column" data-kt-drawer="true" data-kt-drawer-name="app-sidebar"
+     data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true"
+     data-kt-drawer-width="250px" data-kt-drawer-direction="start"
+     data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
+
+    <div class="app-sidebar-logo d-none d-lg-flex flex-stack flex-shrink-0 px-8">
+        <a href="">
+            <img alt="" src="{% static 'img/logo-blue.png' %}" class="theme-light-show h-25px"/>
+        </a>
+    </div>
+
+    <div class="separator d-none d-lg-block"></div>
+
+    <div class="app-sidebar-menu hover-scroll-y my-5 my-lg-5 mx-3"
+         data-kt-scroll="true" data-kt-scroll-height="auto" data-kt-scroll-offset="0">
+        <div class="menu menu-column menu-sub-indention menu-active-bg fw-semibold">
+            <div class="menu-item">
+                {% url 'core:dash-player-list' as player_list %}
+                <a class="menu-link {% if request.path == player_list %}active{% endif %}"
+                   href="{{ player_list }}">
+                    <span class="menu-icon">
+                        <i class="bi bi-journal-text"></i>
+                    </span>
+                    <span class="menu-title">{% trans 'Players' %}</span></a>
+                {% url 'core:dash-game-list' as game_list %}
+                <a class="menu-link {% if request.path == game_list %}active{% endif %}"
+                   href="{{ game_list }}">
+                    <span class="menu-icon">
+                        <i<i class="bi bi-joystick"></i>
+                    </span>
+                    <span class="menu-title">{% trans 'Games' %}</span></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="separator d-none d-lg-block"></div>
+
+    <div class="app-sidebar-user d-flex flex-stack py-5 px-8">
+        <div class="d-flex me-5">
+            <div class="me-2">
+                <span class="app-sidebar-username text-gray-800 fs-6 fw-semibold lh-0">
+                    {{ request.user.first_name|default:'' }} {{ request.user.last_name|default:'' }}
+                </span>
+                <span class="app-sidebar-description text-gray-500 fw-semibold d-block fs-8">{{ request.user.username }}</span>
+            </div>
+        </div>
+        <form action="{% url 'admin:logout' %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-icon btn-active-color-primary btn-icon-custom-color me-n4">
+                <i class="bi bi-box-arrow-in-right">
+                    <span class="path1"></span>
+                    <span class="path2"></span>
+                </i>
+            </button>
+        </form>
+    </div>
+</div>

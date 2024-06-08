@@ -1,0 +1,8 @@
+<div class="col-lg-8">
+    {{ field }}
+    {% for error in field.errors %}
+        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+            {{ error }}
+        </div>
+    {% endfor %}
+</div>

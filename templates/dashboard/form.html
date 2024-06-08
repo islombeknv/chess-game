@@ -1,0 +1,54 @@
+{% extends 'dashboard/layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}{{ action }}: {{ model_name }}{% endblock %}
+{% block navbar_title %}{{ action }}: {{ model_name }}{% endblock %}
+
+{% block extra_css %}{% endblock %}
+
+{% block content %}
+    <div class="card mb-5 mb-xl-10">
+        <form class="form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="card-body border-top p-9">
+
+                <div class="row">
+                    {% for field in form %}
+                        {% include 'dashboard/layouts/form/router.html' with field=field %}
+                    {% endfor %}
+                 
+                </div>
+            </div>
+
+            <div class="card-footer d-flex justify-content-end py-6 px-9">
+                <a href="{{ back_url }}" class="btn btn-light btn-active-light-primary me-2">{% trans 'Discard' %}</a>
+                <button type="submit" class="btn btn-primary">{% trans 'Save' %}</button>
+            </div>
+        </form>
+    </div>
+    {% for error in form.non_field_errors %}
+        <div class="toast-container position-fixed top-0 end-0 p-3 z-index-3">
+            <div class="toast show" role="alert" data-kt-docs-toast="stack">
+                <div class="toast-header">
+                    <img src="{% static 'img/favicon.png' %}" style="width: 15px; margin-right: 10px" alt="">
+                    <strong class="me-auto">{% trans 'Error' %}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                </div>
+                <div class="toast-body">
+                    {{ error }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        $(function () {
+            $('.datepicker').flatpickr({
+                enableTime: true
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,14 @@
+<div class="col-lg-12">
+    <input type="number" name="{{ field.name }}"
+           class="form-control mb-3 mb-lg-0 {% if field.field.disabled %}disabled{% else %}form-control-solid{% endif %}"
+           placeholder="{{ field.label }}" value="{{ field.value|default:'' }}"
+           {% if field.field.required %}required{% endif %}
+           {% if field.field.disabled %}disabled{% endif %}
+                   {% for key, value in field.field.widget.attrs.items %}{{ key }}={{ value }}{% endfor %}>
+
+    {% for error in field.errors %}
+        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+            {{ error }}
+        </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,12 @@
+<div class="col-lg-8">
+    <textarea name="{{ field.name }}"
+              class="form-control form-control-lg mb-3 mb-lg-0 {% if field.field.disabled %}disabled{% else %}form-control-solid{% endif %}"
+              placeholder="{{ field.label }}" {% if field.field.required %}required{% endif %}
+              {% if field.field.disabled %}disabled{% endif %} rows="1">{{ field.value|default:'' }}</textarea>
+
+    {% for error in field.errors %}
+        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+            {{ error }}
+        </div>
+    {% endfor %}
+</div>

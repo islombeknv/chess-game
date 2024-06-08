@@ -1,0 +1,13 @@
+<div class="col-lg-8 fv-row">
+    <div class="d-flex align-items-center mt-3">
+        <label class="form-check form-check-custom form-check-inline form-check-solid me-5">
+            <input class="form-check-input" name="{{ field.name }}" type="checkbox"
+                   {% if field.value %}checked{% endif %}/>
+        </label>
+    </div>
+    {% for error in field.errors %}
+        <div class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+            {{ error }}
+        </div>
+    {% endfor %}
+</div>

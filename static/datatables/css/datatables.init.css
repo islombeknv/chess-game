@@ -1,0 +1,13 @@
+.select-checkbox::before {
+    display: none !important;
+}
+
+tr.selected > * {
+    box-shadow: initial !important;
+    color: inherit !important;
+}
+
+tr.selected td a {
+    color: #3F4254 !important;
+    text-decoration: none !important;
+}
