@@ -1,7 +1,7 @@
 
 ## 1. Clone the Repository
 
-First, clone your project repository from GitHub to your server.
+First, clone this project repository from GitHub to your server.
 
 
 ```bash
