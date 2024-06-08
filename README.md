@@ -14,8 +14,15 @@ First, clone your project repository from GitHub to your server.
 Create a Virtual Environment
 
 ```bash
+  # linux
   python3 -m venv venv
   source venv/bin/activate
+
+```
+```bash
+  # windowa
+  python -m venv venv
+  venv/bin/activate
 
 ```
 
