@@ -14,15 +14,8 @@ First, clone your project repository from GitHub to your server.
 Create a Virtual Environment
 
 ```bash
-  # linux
   python3 -m venv venv
   source venv/bin/activate
-
-```
-```bash
-  # windows
-  python -m venv venv
-  venv/bin/activate
 
 ```
 
@@ -62,7 +55,14 @@ Execute the tests to ensure everything is functioning correctly.
   python manage.py test
 ```
 
-## 8. Data Generation:s
+## 8. Data Generation:
 Generate realistic chess game records.
 ```bash
   python manage.py generate_games [argument]
+```
+
+## 8. Run server:
+Run server to visit website and see the result.
+```bash
+  python manage.py runserver
+```
