@@ -20,7 +20,7 @@ Create a Virtual Environment
 
 ```
 ```bash
-  # windowa
+  # windows
   python -m venv venv
   venv/bin/activate
 
